@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Visum</string>
+    <string name="color_seleccionado">Color seleccionado:</string>
+
+    <string name="complementario">Color complementario:</string>
+    <string name="title_activity_complementaria">ComplementariaActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="btn_capturar">Capturar imagen</string>
+</resources>
