@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import website.timrobinson.opencvtutorial.CamaraActivity;
@@ -18,6 +19,7 @@ public class ArmarioAdapter extends RecyclerView.Adapter {
     int item;
     Context context;
 
+
     public ArmarioAdapter(Context context) {
         this.context = context;
     }
@@ -27,10 +29,12 @@ public class ArmarioAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View cell = LayoutInflater.from(parent.getContext()).inflate(R.layout.armario_celda, parent, false);
 
+        ImageView ivImagen = (ImageView) cell.findViewById(R.id.imageView4);
+        TextView tvTitulo = (TextView) cell.findViewById(R.id.textView2);
 
-        TextView tvTitulo;
-        cell.findViewById(R.id.textView2);
-        cell.findViewById(R.id.imageView4);
+        // --- Cambiar texto e Imagen ---
+        ivImagen.setImageResource(0);
+        tvTitulo.setText("");
 
         //Listener cuando se pulsa sobre una celda:
         cell.setOnClickListener(new View.OnClickListener() {

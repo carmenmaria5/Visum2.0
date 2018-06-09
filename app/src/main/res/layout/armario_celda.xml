@@ -15,21 +15,17 @@
             android:layout_height="match_parent"
             android:src="@drawable/abc_ab_share_pack_mtrl_alpha" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                android:gravity="bottom"
-                android:padding="5dp"
-                android:text="TextView" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@android:drawable/screen_background_dark_transparent"
+            android:gravity="bottom"
+            android:padding="5dp"
+            android:text="TextView"
+            android:textColor="@android:color/white" />
 
     </android.support.v7.widget.CardView>
 
