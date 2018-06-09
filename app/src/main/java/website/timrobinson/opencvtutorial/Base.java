@@ -15,6 +15,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -60,7 +61,7 @@ public class Base extends AppCompatActivity implements View.OnTouchListener, Cam
     TextView muestra;
 
     //Btn captura
-    Button btn_captura;
+    ImageButton btn_captura;
 
     //TV para la muestra del color.
     TextView tvTouchColor;
@@ -115,7 +116,7 @@ public class Base extends AppCompatActivity implements View.OnTouchListener, Cam
 //        tvTouchColor = (TextView) findViewById(R.id.tvColor);
         tvMuestra = (TextView) findViewById(R.id.tvMuestra);
         muestra = (TextView) findViewById(R.id.muestra);
-        btn_captura = (Button) findViewById(R.id.btn_captura);
+        btn_captura = (ImageButton) findViewById(R.id.btn_captura);
 
         //Inicializa la camara de OpenCV.
         OpenCvCamara = (CameraBridgeViewBase) findViewById(R.id.opencvCamara);
@@ -353,7 +354,7 @@ public class Base extends AppCompatActivity implements View.OnTouchListener, Cam
 //                break;
 //                }
 //            case R.id.menu_complementario: {
-//                Intent i = new Intent(this, ComplementarioActivity.class);
+//                Intent i = new Intent(this, CamaraActivity.class);
 //                startActivity(i);
 //                break;
 //            }

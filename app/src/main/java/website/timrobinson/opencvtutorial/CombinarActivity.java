@@ -39,7 +39,8 @@ public class CombinarActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-                // TODO 18/06/08
+
+
                 break;
             default:
                 break;
