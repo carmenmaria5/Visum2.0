@@ -74,7 +74,7 @@ public class CamaraActivity extends Base {
 //                    // create a Dialog component
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CamaraActivity.this);
                     alertDialogBuilder.setTitle(R.string.title_guardar_img);
-                    alertDialogBuilder.setMessage(R.string.msg_guardar_img).setCancelable(true).setPositiveButton(R.string.msg_si, new DialogInterface.OnClickListener() {
+                    alertDialogBuilder.setMessage(R.string.msg_guardar_img).setCancelable(false).setPositiveButton(R.string.msg_si, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Llama a la actividad de "Añarir al armario" para guardar la imagen
                             Intent i = new Intent(CamaraActivity.this, PrendaActivity.class);
