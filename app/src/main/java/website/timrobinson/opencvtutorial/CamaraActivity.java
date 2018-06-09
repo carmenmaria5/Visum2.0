@@ -1,6 +1,7 @@
 package website.timrobinson.opencvtutorial;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -18,7 +19,7 @@ import java.io.ByteArrayOutputStream;
 
 import website.timrobinson.opencvtutorial.armario.ArmarioActivity;
 
-public class CamaraActivity extends Base{
+public class CamaraActivity extends Base {
 
     //--- VARIABLES Y CONSTANTES -------------------------------------------------------------------
     TextView tvComplementario;
@@ -53,9 +54,9 @@ public class CamaraActivity extends Base{
             @Override
             public void onClick(View view) {
                 if (!primerTouch) {
-                    Toast.makeText(CamaraActivity.this, "Debe tocar primero la pantalla para seleccionar el color", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CamaraActivity.this, R.string.msg_selec_color, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(CamaraActivity.this, "Imagen capturada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CamaraActivity.this, R.string.msg_img_capturada, Toast.LENGTH_SHORT).show();
 
                     imagen = foto;
                     colorImagen = rgb;
@@ -65,14 +66,30 @@ public class CamaraActivity extends Base{
                     imagen.compress(Bitmap.CompressFormat.JPEG, 100, bytesPrenda1);
 
 
-
-                    String pathImagen = MediaStore.Images.Media.insertImage(getApplicationContext().getContentResolver(), rotarImagen(imagen, 90), "Title", null);
+                    final String pathImagen = MediaStore.Images.Media.insertImage(getApplicationContext().getContentResolver(), rotarImagen(imagen, 90), "Title", null);
 
                     ivCaptura.setImageURI(Uri.parse(pathImagen));
 
-                    // create a Dialog component
-                    AlertDialog.Builder alertDialogBuilder  = new AlertDialog.Builder(getApplicationContext());
-                    alertDialogBuilder.setTitle("Your Title");
+//                    // create a Dialog component
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CamaraActivity.this);
+                    alertDialogBuilder.setTitle(R.string.title_guardar_img);
+                    alertDialogBuilder.setMessage(R.string.msg_guardar_img).setCancelable(true).setPositiveButton(R.string.msg_si, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            //Llama a la actividad de "Añarir al armario" para guardar la imagen
+                            Intent i = new Intent(CamaraActivity.this, ArmarioActivity.class);
+
+                            i.putExtra("fotoPrenda", Uri.parse(pathImagen).toString());
+
+                            i.putExtra("colorPrenda", colorImagen);
+                            startActivity(i);
+                        }
+                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // if this button is clicked, just close
+                            // the dialog box and do nothing
+                            dialog.cancel();
+                        }
+                    });
                     alertDialogBuilder.show();
 
 
@@ -90,8 +107,7 @@ public class CamaraActivity extends Base{
     }
 
     //Método para rotar la imagen, porque OpenCV la pone girada por defecto
-    public static Bitmap rotarImagen(Bitmap source, float angle)
-    {
+    public static Bitmap rotarImagen(Bitmap source, float angle) {
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
         return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);

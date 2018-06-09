@@ -7,7 +7,7 @@
     <item
         android:id="@+id/menu_cuadrado"
         android:title="Abrir armario" />
-    <item
-        android:id="@+id/menu_triada"
-        android:title="Añadir prenda" />
+    <!--<item-->
+        <!--android:id="@+id/menu_triada"-->
+        <!--android:title="Añadir prenda" />-->
 </menu>

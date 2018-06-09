@@ -5,6 +5,15 @@
     <string name="complementario">Color complementario:</string>
     <string name="title_activity_complementaria">ComplementariaActivity</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_guardar_img">"Guardar imagen"</string>
 
     <string name="btn_capturar">Capturar imagen</string>
+
+    <string name="msg_selec_color">Debe tocar primero la pantalla para seleccionar el color</string>
+    <string name="msg_img_capturada">Imagen capturada</string>
+    <string name="msg_guardar_img">¿Desea guardar la imagen en el armario?</string>
+    <string name="msg_si">SI</string>
+    <string name="msg_no">NO</string>
+
+
 </resources>
