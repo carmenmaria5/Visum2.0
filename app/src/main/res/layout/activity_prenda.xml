@@ -6,16 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".armario.PrendaActivity">
 
+
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="165dp"
-        android:layout_height="183dp"
+        android:id="@+id/ivPrenda"
+        android:layout_width="139dp"
+        android:layout_height="166dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/abc_list_focused_holo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.039"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,11 +26,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
+        android:layout_marginTop="16dp"
+        android:text="Nombre"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.588"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintStart_toEndOf="@+id/ivPrenda"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Nombre" />
 
@@ -39,13 +40,13 @@
         android:layout_height="19dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:text="TextView"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.882"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintStart_toEndOf="@+id/ivPrenda"
         app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
 
     <TextView
@@ -57,21 +58,21 @@
         android:layout_marginTop="12dp"
         android:text="Color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.559"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintStart_toEndOf="@+id/ivPrenda"
         app:layout_constraintTop_toBottomOf="@+id/etNombre" />
 
     <TextView
         android:id="@+id/tvColorEdit"
-        android:layout_width="134dp"
-        android:layout_height="95dp"
+        android:layout_width="158dp"
+        android:layout_height="31dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.799"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.378"
+        app:layout_constraintStart_toEndOf="@+id/ivPrenda"
         app:layout_constraintTop_toBottomOf="@+id/tvColor" />
 
     <TextView
@@ -89,7 +90,7 @@
 
     <TextView
         android:id="@+id/etDesc"
-        android:layout_width="344dp"
+        android:layout_width="314dp"
         android:layout_height="141dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -107,16 +108,16 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Tipo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintHorizontal_bias="0.023"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/ivPrenda" />
 
     <Spinner
         android:id="@+id/spTipos"
-        android:layout_width="180dp"
+        android:layout_width="193dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -141,11 +142,34 @@
 
     <TextView
         android:id="@+id/tvEtiquetasEdit"
-        android:layout_width="352dp"
+        android:layout_width="335dp"
         android:layout_height="22dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Eti1, Eti2, Et3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEtiquetas"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintVertical_bias="0.105" />
+
+    <RatingBar
+        android:id="@+id/size"
+        android:layout_width="188dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:numStars="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivPrenda"
+        app:layout_constraintTop_toBottomOf="@+id/tvColorEdit"
+        app:layout_constraintVertical_bias="0.021" />
 
 </android.support.constraint.ConstraintLayout>

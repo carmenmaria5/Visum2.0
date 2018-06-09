@@ -29,8 +29,9 @@
         </activity>
         <activity android:name=".CombinarActivity" />
         <activity android:name=".armario.ArmarioActivity" />
-        <activity android:name=".armario.PrendaActivity" />
-        <activity android:name=".armario.ArmarioConjuntosActivity"></activity>
+        <activity android:name=".armario.PrendaActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".armario.ArmarioConjuntosActivity" />
+        <activity android:name=".conjunto.ConjuntoActivity"></activity>
     </application>
 
 </manifest>

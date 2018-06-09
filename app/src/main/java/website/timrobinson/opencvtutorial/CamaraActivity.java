@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 
 import website.timrobinson.opencvtutorial.armario.ArmarioActivity;
+import website.timrobinson.opencvtutorial.armario.PrendaActivity;
 
 public class CamaraActivity extends Base {
 
@@ -76,7 +77,7 @@ public class CamaraActivity extends Base {
                     alertDialogBuilder.setMessage(R.string.msg_guardar_img).setCancelable(true).setPositiveButton(R.string.msg_si, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Llama a la actividad de "Añarir al armario" para guardar la imagen
-                            Intent i = new Intent(CamaraActivity.this, ArmarioActivity.class);
+                            Intent i = new Intent(CamaraActivity.this, PrendaActivity.class);
 
                             i.putExtra("fotoPrenda", Uri.parse(pathImagen).toString());
 

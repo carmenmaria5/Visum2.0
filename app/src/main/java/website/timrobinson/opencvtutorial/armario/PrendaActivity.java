@@ -10,7 +10,7 @@ public class PrendaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_prenda);
+        setContentView(R.layout.activity_prenda_editar);
 
 
     }
