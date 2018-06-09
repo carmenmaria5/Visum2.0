@@ -76,7 +76,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvColor" />
 
     <TextView
-        android:id="@+id/tvDesc"
+        android:id="@+id/tvConjuntoDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -89,7 +89,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spTipos" />
 
     <TextView
-        android:id="@+id/etDesc"
+        android:id="@+id/etConjuntoDesc"
         android:layout_width="314dp"
         android:layout_height="141dp"
         android:layout_marginEnd="8dp"
@@ -100,7 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/tvConjuntoDesc" />
 
     <TextView
         android:id="@+id/tvTipo"
@@ -128,7 +128,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTipo" />
 
     <TextView
-        android:id="@+id/tvEtiquetas"
+        android:id="@+id/tvConjuntoEtiquetas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -138,7 +138,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.025"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/etConjuntoDesc" />
 
     <TextView
         android:id="@+id/tvEtiquetasEdit"
@@ -153,7 +153,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEtiquetas"
+        app:layout_constraintTop_toBottomOf="@+id/tvConjuntoEtiquetas"
         app:layout_constraintVertical_bias="0.105" />
 
     <RatingBar

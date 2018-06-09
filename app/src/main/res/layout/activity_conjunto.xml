@@ -7,36 +7,61 @@
     tools:context=".conjunto.ConjuntoActivity"
     tools:layout_editor_absoluteY="25dp">
 
-    <TextView
-        android:id="@+id/tvPrendas"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Prendas"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Puntuación" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:numStars="5"
+            android:rating="5"
+            android:stepSize="1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvPrendas"
+        android:layout_width="147dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Prendas del conjunto:"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -92,27 +117,88 @@
 
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/checkCombina"
-        android:layout_width="30dp"
-        android:layout_height="27dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
-        app:layout_constraintStart_toEndOf="@+id/etCheckCombina"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/abc_btn_switch_to_on_mtrl_00001" />
-
-    <TextView
-        android:id="@+id/etCheckCombina"
-        android:layout_width="59dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="196dp"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:text="Combina:"
-        app:layout_constraintStart_toEndOf="@+id/tvPrendas"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/etCheckCombina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:text="Combina:"
+            tools:layout_editor_absoluteX="223dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <ImageView
+            android:id="@+id/checkCombina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/abc_btn_switch_to_on_mtrl_00001"
+            app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/etCheckCombina"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvConjuntoDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Descripción"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="274dp" />
+
+        <EditText
+            android:id="@+id/etConjuntoDesc"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:gravity="top|left"
+            android:scrollbars="vertical"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="300dp"
+            tools:text="Descripción..." />
+
+        <TextView
+            android:id="@+id/tvConjuntoEtiquetas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Etiquetas"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="479dp" />
+
+        <EditText
+            android:id="@+id/etConjuntoEtiquetas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="502dp"
+            tools:text="Etiqueta1,Etiqueta2..." />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
