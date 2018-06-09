@@ -1,5 +1,6 @@
 package website.timrobinson.opencvtutorial;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -70,9 +71,9 @@ public class CamaraActivity extends Base{
                     ivCaptura.setImageURI(Uri.parse(pathImagen));
 
                     // create a Dialog component
-//                    AlertDialog.Builder alertDialogBuilder  = new AlertDialog.Builder();
-//                    alertDialogBuilder.setTitle("Your Title");
-//                    alertDialogBuilder.show();
+                    AlertDialog.Builder alertDialogBuilder  = new AlertDialog.Builder(getApplicationContext());
+                    alertDialogBuilder.setTitle("Your Title");
+                    alertDialogBuilder.show();
 
 
                 }
