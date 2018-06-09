@@ -224,6 +224,8 @@ public class Base extends AppCompatActivity implements View.OnTouchListener, Cam
         ColorUtils.RGBToHSL((int) r, (int) g, (int) b, tHSL);
 
         //-------------------------------------------------------
+
+        //Guardamos la imagen que se genera al tocar la pantalla
         foto = Bitmap.createBitmap(fotograma.cols(), fotograma.rows(), Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(fotograma, foto);
 
