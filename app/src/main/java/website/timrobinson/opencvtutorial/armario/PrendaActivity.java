@@ -126,7 +126,6 @@ public class PrendaActivity extends AppCompatActivity {
                     Toast.makeText(this, R.string.msg_prenda_anadida, Toast.LENGTH_SHORT).show();
                     editar = false;
                     deshabilitarCampos(editar);
-                    ivPrenda.setImageResource(0);
                     finish();
                 } catch (IOException e) {
                     e.printStackTrace();
