@@ -139,6 +139,8 @@ public class ArmarioActivity extends AppCompatActivity {
 
     private Boolean comprobarColor(String color, String color1) {
 
+
+
         return true;
     }
 }

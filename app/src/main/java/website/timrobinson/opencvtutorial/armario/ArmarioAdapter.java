@@ -2,6 +2,7 @@ package website.timrobinson.opencvtutorial.armario;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -87,6 +88,8 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
     public void onBindViewHolder(ArmarioViewHolder holder, int position) {
         item = position;
 
+        holder.bindPrenda(tPrendas.get(item));
+
         holder.ivImagen.setImageResource(0);
         holder.tvTitulo.setText("");
 
@@ -123,16 +126,16 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
                     if (nSelect == 0){
                         item1 = getLayoutPosition();
                         nSelect++;
-                        Toast.makeText(context, tPrendas.get(item1)+" seleccionado (1 de 2)", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, tPrendas.get(item1).getNombrePrenda()+" seleccionado (1 de 2)", Toast.LENGTH_SHORT).show();
                     }else if (nSelect == 1){
                         item2 = getLayoutPosition();
                         nSelect++;
-                        Toast.makeText(context, tPrendas.get(item2)+" seleccionado (2 de 2)", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, tPrendas.get(item2).getNombrePrenda()+" seleccionado (2 de 2)", Toast.LENGTH_SHORT).show();
                     }else if(nSelect == 2){
                         item1 = getLayoutPosition();
                         item2 = 0;
                         nSelect=1;
-                        Toast.makeText(context, tPrendas.get(item1)+" seleccionado (1 de 2)", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, tPrendas.get(item1).getNombrePrenda()+" seleccionado (1 de 2)", Toast.LENGTH_SHORT).show();
                     }
                     // Redraw the old selection and the new
 
@@ -141,6 +144,11 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
                 }
             });
 
+        }
+
+        public void bindPrenda(Prenda p) {
+            ivImagen.setImageURI(p.getFotoPrenda(context));
+            tvTitulo.setText(p.getNombrePrenda());
         }
 
     }
