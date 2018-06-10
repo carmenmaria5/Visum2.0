@@ -2,18 +2,16 @@ package website.timrobinson.opencvtutorial.armario;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import website.timrobinson.opencvtutorial.CamaraActivity;
 import website.timrobinson.opencvtutorial.R;
 import website.timrobinson.opencvtutorial.modelo.Prenda;
 
@@ -33,6 +31,23 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
 
     //RV continente;
     RecyclerView rvArmario;
+
+    private int item1 = 0;
+    private int item2 = 0;
+
+    int nSelect=0;
+
+    public int getItem1() {
+        return item1;
+    }
+
+    public int getItem2() {
+        return item2;
+    }
+
+    public int getnSelect() {
+        return nSelect;
+    }
 
     //--- CONSTRUCTOR ------------------------------------------------------------------------------
     public ArmarioAdapter(Context context, List<Prenda> tPrendas) {
@@ -60,7 +75,6 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
 
                 //Se indica que la vista es de visualización, no de edición.
                 i.putExtra("EDITAR", false);
-
                 //Se lanza la actividad.
                 context.startActivity(i);
             }
@@ -81,7 +95,7 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
     //Devuelve el total de items crados.
     @Override
     public int getItemCount() {
-        return 20;
+        return tPrendas.size();
     }
 
     //Guarda el RV que contiene la lista.
@@ -92,7 +106,7 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
     }
 
     //--- VIEWHOLDER -------------------------------------------------------------------------------
-    public static class ArmarioViewHolder extends RecyclerView.ViewHolder {
+    public class ArmarioViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivImagen;
         TextView tvTitulo;
@@ -101,7 +115,35 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
             super(itemView);
             ivImagen = (ImageView) itemView.findViewById(R.id.imageView4);
             tvTitulo = (TextView) itemView.findViewById(R.id.textView2);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (nSelect == 0){
+                        item1 = getLayoutPosition();
+                        nSelect++;
+                        Toast.makeText(context, tPrendas.get(item1)+" seleccionado (1 de 2)", Toast.LENGTH_SHORT).show();
+                    }else if (nSelect == 1){
+                        item2 = getLayoutPosition();
+                        nSelect++;
+                        Toast.makeText(context, tPrendas.get(item2)+" seleccionado (2 de 2)", Toast.LENGTH_SHORT).show();
+                    }else if(nSelect == 2){
+                        item1 = getLayoutPosition();
+                        item2 = 0;
+                        nSelect=1;
+                        Toast.makeText(context, tPrendas.get(item1)+" seleccionado (1 de 2)", Toast.LENGTH_SHORT).show();
+                    }
+                    // Redraw the old selection and the new
+
+                    notifyItemChanged(item1);
+
+                }
+            });
+
         }
+
     }
+
 
 }

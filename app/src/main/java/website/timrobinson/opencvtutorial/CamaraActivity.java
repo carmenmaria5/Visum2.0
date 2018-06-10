@@ -61,10 +61,14 @@ public class CamaraActivity extends Base {
 
                     ivCaptura.setImageURI(Uri.parse(pathImagen));
 
-//                    // create a Dialog component
+                    // create a Dialog component
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CamaraActivity.this);
-                    alertDialogBuilder.setTitle(R.string.title_guardar_img);
-                    alertDialogBuilder.setMessage(R.string.msg_guardar_img).setCancelable(false).setPositiveButton(R.string.msg_si, new DialogInterface.OnClickListener() {
+
+                    alertDialogBuilder
+                            .setTitle(R.string.title_guardar_img)
+                            .setMessage(R.string.msg_guardar_img)
+                            .setCancelable(false)
+                            .setPositiveButton(R.string.msg_si, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Llama a la actividad de "Añarir al armario" para guardar la imagen
                             Intent i = new Intent(CamaraActivity.this, PrendaActivity.class);
@@ -80,21 +84,20 @@ public class CamaraActivity extends Base {
                             ivCaptura.setImageResource(0);
                             dialog.cancel();
                         }
-                    });
-                    alertDialogBuilder.show();
-
+                    }).show();
 
                 }
-
-
-//
-
-
             }
         });
 
 //        tvComplementario = (TextView) findViewById(R.id.tvComplementario);
 //        complementario = (TextView) findViewById(R.id.complementario);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ivCaptura.setImageResource(0);
     }
 
     //Método para rotar la imagen, porque OpenCV la pone girada por defecto
