@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
@@ -98,6 +99,7 @@ public class CamaraActivity extends Base {
     public void onResume() {
         super.onResume();
         ivCaptura.setImageResource(0);
+        tvMuestra.setBackgroundColor(getResources().getColor(android.R.color.transparent));
     }
 
     //Método para rotar la imagen, porque OpenCV la pone girada por defecto

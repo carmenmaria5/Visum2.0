@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import website.timrobinson.opencvtutorial.R;
+import website.timrobinson.opencvtutorial.conjunto.ConjuntoActivity;
 import website.timrobinson.opencvtutorial.modelo.Prenda;
 
 //Adaptador que marca el comportamiento de la lista de prendas.
@@ -138,6 +139,21 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
 
                     notifyItemChanged(item1);
 
+                }
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+
+                    Intent i = new Intent(context, PrendaActivity.class);
+
+                    i.putExtra("PRENDA", tPrendas.get(getLayoutPosition()).getId());
+                    i.putExtra("EDITAR", false);
+
+                    context.startActivity(i);
+
+                    return false;
                 }
             });
 
