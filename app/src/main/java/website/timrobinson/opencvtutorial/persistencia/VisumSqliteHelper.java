@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class VisumSqliteHelper extends SQLiteOpenHelper {
 
-    private String sqlCreatePrendas = "CREATE TABLE IF NOT EXISTS prendas (idPrenda integer primary key,nombrePrenda VARCHAR(45), puntuacion INTEGER,color VARCHAR(45),descripcion VARCHAR(45),etiqueta VARCHAR(45), fotoPrenda BLOB, tipoPrenda VARCHAR(45))" ;
+    private String sqlCreatePrendas = "CREATE TABLE IF NOT EXISTS prendas (idPrenda integer primary key,nombrePrenda VARCHAR(45), puntuacion DECIMAL,color VARCHAR(45),descripcion VARCHAR(45),etiqueta VARCHAR(45), fotoPrenda BLOB, tipoPrenda VARCHAR(45))" ;
     private String sqlCreateConjuntos = "CREATE TABLE IF NOT EXISTS conjuntos (idConjunto integer primary key,idPrenda1 VARCHAR(45),idPrenda2 VARCHAR(45), puntuacion INTEGER,descripcion VARCHAR(45),etiqueta VARCHAR(45),FOREIGN KEY(idPrenda1) REFERENCES prendas(idPrenda),FOREIGN KEY(idPrenda2) REFERENCES prendas(idPrenda))" ;
 
 

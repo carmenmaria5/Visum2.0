@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.UnsupportedEncodingException;
+
 import website.timrobinson.opencvtutorial.R;
+import website.timrobinson.opencvtutorial.persistencia.Bd;
 
 //Clase que controla la vista del armario.
 public class ArmarioActivity extends AppCompatActivity {
@@ -29,7 +32,11 @@ public class ArmarioActivity extends AppCompatActivity {
         rvArmario.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
 
         //Se enlaza con el adaptador.
-        rvArmario.setAdapter(new ArmarioAdapter(getApplicationContext()));
+        try {
+            rvArmario.setAdapter(new ArmarioAdapter(getApplicationContext(), Bd.getTodasPrendas(getApplicationContext())));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
     //--- OTROS --------------------------------------------------------------------------------

@@ -10,51 +10,98 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import website.timrobinson.opencvtutorial.CamaraActivity;
 import website.timrobinson.opencvtutorial.R;
+import website.timrobinson.opencvtutorial.modelo.Prenda;
 
 //Adaptador que marca el comportamiento de la lista de prendas.
-public class ArmarioAdapter extends RecyclerView.Adapter {
+public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioViewHolder> {
 
+    //--- VARIABLES --------------------------------------------------------------------------------
+
+    //Lista de prendas.
+    List<Prenda> tPrendas;
+
+    //Item seleccionado.
     int item;
+
+    //Contexto de la App.
     Context context;
 
+    //RV continente;
+    RecyclerView rvArmario;
 
-    public ArmarioAdapter(Context context) {
+    //--- CONSTRUCTOR ------------------------------------------------------------------------------
+    public ArmarioAdapter(Context context, List<Prenda> tPrendas) {
         this.context = context;
+        this.tPrendas = tPrendas;
     }
+
+    //--- MÉTODOS ----------------------------------------------------------------------------------
 
     //Se enlaza e inicializa la lista con el viewholder indicado, en este caso las celdas de la lista de ropa.
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ArmarioAdapter.ArmarioViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View cell = LayoutInflater.from(parent.getContext()).inflate(R.layout.armario_celda, parent, false);
 
         ImageView ivImagen = (ImageView) cell.findViewById(R.id.imageView4);
         TextView tvTitulo = (TextView) cell.findViewById(R.id.textView2);
 
-        // --- Cambiar texto e Imagen ---
-        ivImagen.setImageResource(0);
-        tvTitulo.setText("");
-
         //Listener cuando se pulsa sobre una celda:
         cell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, CamaraActivity.class);
+
+                //Se crea el intent.
+                Intent i = new Intent(context, PrendaActivity.class);
+
+                //Se indica que la vista es de visualización, no de edición.
+                i.putExtra("EDITAR", false);
+
+                //Se lanza la actividad.
                 context.startActivity(i);
             }
         });
 
-        return new RecyclerView.ViewHolder(cell) {};
+        return new ArmarioViewHolder(cell);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(ArmarioViewHolder holder, int position) {
         item = position;
+
+        holder.ivImagen.setImageResource(0);
+        holder.tvTitulo.setText("");
+
     }
 
+    //Devuelve el total de items crados.
     @Override
     public int getItemCount() {
         return 20;
     }
+
+    //Guarda el RV que contiene la lista.
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        rvArmario = recyclerView;
+    }
+
+    //--- VIEWHOLDER -------------------------------------------------------------------------------
+    public static class ArmarioViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView ivImagen;
+        TextView tvTitulo;
+
+        public ArmarioViewHolder(View itemView) {
+            super(itemView);
+            ivImagen = (ImageView) itemView.findViewById(R.id.imageView4);
+            tvTitulo = (TextView) itemView.findViewById(R.id.textView2);
+        }
+    }
+
 }
