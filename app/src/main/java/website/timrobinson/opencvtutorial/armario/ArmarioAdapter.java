@@ -90,9 +90,6 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
 
         holder.bindPrenda(tPrendas.get(item));
 
-        holder.ivImagen.setImageResource(0);
-        holder.tvTitulo.setText("");
-
     }
 
     //Devuelve el total de items crados.
