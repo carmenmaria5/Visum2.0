@@ -97,10 +97,10 @@ public class ArmarioActivity extends AppCompatActivity {
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ArmarioActivity.this);
 
                     alertDialogBuilder
-                            .setTitle("Comprobación de combinación")
+                            .setTitle(R.string.title_comprobar_combinacion)
                             .setCancelable(false)
 
-                            .setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
+                            .setPositiveButton(R.string.btn_guardar, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     //Llama a la actividad de "Añarir al armario" para guardar la imagen
                                     Intent i = new Intent(ArmarioActivity.this, ConjuntoActivity.class);
@@ -114,7 +114,7 @@ public class ArmarioActivity extends AppCompatActivity {
                                 }
                             })
 
-                            .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            .setNegativeButton(R.string.btn_cancelar, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
 
                             dialog.cancel();
@@ -122,9 +122,9 @@ public class ArmarioActivity extends AppCompatActivity {
                     });
 
                     if (combinan){
-                        alertDialogBuilder.setMessage("Las prendas combinan");
+                        alertDialogBuilder.setMessage(R.string.msg_combinan_prendas);
                     }else {
-                        alertDialogBuilder.setMessage("Las prendas no combinan");
+                        alertDialogBuilder.setMessage(R.string.msg_no_combinan_prendas);
                     }
 
                     alertDialogBuilder.show();

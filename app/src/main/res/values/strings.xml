@@ -8,8 +8,11 @@
     <string name="title_guardar_img">"Guardar imagen"</string>
     <string name="title_editar_prenda">Editar prenda</string>
     <string name="title_guardar_prenda">Guardar prenda</string>
+    <string name="title_comprobar_combinacion">Comprobación de combinación</string>
 
     <string name="btn_capturar">Capturar imagen</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_guardar">Guardar</string>
 
     <string name="msg_selec_color">Debe tocar primero la pantalla para seleccionar el color</string>
     <string name="msg_img_capturada">Imagen capturada</string>
@@ -20,6 +23,8 @@
     <string name="msg_prenda_anadida">Prenda añadida correctamente a la BD</string>
     <string name="msg_error_prenda_anadida">Error!! No se ha podido añadir la prenda</string>
     <string name="msg_error_recuperar_prendas">Error!! No se han podido recuperar las prendas</string>
+    <string name="msg_no_combinan_prendas">Las prendas no combinan</string>
+    <string name="msg_combinan_prendas">Las prendas combinan</string>
 
     <string name="nombre">Nombre</string>
 
