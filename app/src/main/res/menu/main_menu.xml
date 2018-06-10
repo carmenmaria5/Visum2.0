@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--<item-->
-        <!--android:id="@+id/menu_combinar"-->
-        <!--android:title="Combinar prendas" />-->
     <item
-        android:id="@+id/menu_cuadrado"
+        android:id="@+id/menu_abrir_armario"
         android:title="Abrir armario" />
-    <!--<item-->
-        <!--android:id="@+id/menu_triada"-->
-        <!--android:title="Añadir prenda" />-->
 </menu>

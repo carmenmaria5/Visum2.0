@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<item-->
+        <!--android:id="@+id/menu_editar_prenda"-->
+        <!--android:icon="@mipmap/ic_menu_editar"-->
+        <!--android:title="@string/title_editar_prenda"-->
+        <!--app:showAsAction="always" />-->
+    <item
+        android:id="@+id/menu_guarda_prenda"
+        android:icon="@mipmap/ic_menu_guardar"
+        android:title="@string/title_guardar_prenda"
+        app:showAsAction="always" />
+</menu>

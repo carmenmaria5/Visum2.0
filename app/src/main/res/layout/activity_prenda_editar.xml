@@ -45,26 +45,16 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvNombre"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="TextView"
-                    tools:layout_editor_absoluteX="195dp"
-                    tools:layout_editor_absoluteY="24dp"
-                    tools:text="Nombre" />
-
                 <EditText
                     android:id="@+id/etNombre"
                     android:layout_width="match_parent"
                     android:layout_height="18dp"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:text="Nombre"
                     android:textColor="@android:color/darker_gray"
                     tools:layout_editor_absoluteX="195dp"
-                    tools:layout_editor_absoluteY="47dp" />
+                    tools:layout_editor_absoluteY="47dp"
+                    android:hint="@string/nombre"/>
 
                 <TextView
                     android:id="@+id/tvColor"
@@ -83,7 +73,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
-                    android:background="@color/colorPrimaryDark"
                     tools:layout_editor_absoluteX="195dp"
                     tools:layout_editor_absoluteY="120dp" />
 
@@ -177,7 +166,7 @@
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="502dp"
-            tools:text="Etiqueta1,Etiqueta2..." />
+            android:hint="@string/msg_etiquetas"/>
 
     </LinearLayout>
 

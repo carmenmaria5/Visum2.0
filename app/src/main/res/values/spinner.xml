@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tipos_ropa">
+        <item></item>
+        <item>Americana</item>
+        <item>Blusa</item>
+        <item>Camisa</item>
+        <item>Camiseta</item>
+        <item>Chaqueta</item>
+        <item>Falda</item>
+        <item>Pantalón</item>
+        <item>Polo</item>
+        <item>Vestido</item>
+        <item>Suéter</item>
+    </string-array>
+</resources>

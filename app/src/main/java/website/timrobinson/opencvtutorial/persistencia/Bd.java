@@ -30,7 +30,7 @@ public class Bd {
         if (sqliteDatabase == null) {
 
             VisumSqliteHelper usdbh =
-                    new VisumSqliteHelper(context, "BDVisum", null, 1);
+                    new VisumSqliteHelper(context, "visum.sqlite", null, 1);
 
             sqliteDatabase = usdbh.getWritableDatabase();
 

@@ -6,6 +6,8 @@
     <string name="title_activity_complementaria">ComplementariaActivity</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_guardar_img">"Guardar imagen"</string>
+    <string name="title_editar_prenda">Editar prenda</string>
+    <string name="title_guardar_prenda">Guardar prenda</string>
 
     <string name="btn_capturar">Capturar imagen</string>
 
@@ -14,6 +16,11 @@
     <string name="msg_guardar_img">¿Desea guardar la imagen en el armario?</string>
     <string name="msg_si">SI</string>
     <string name="msg_no">NO</string>
+    <string name="msg_etiquetas">Casual,Primavera...</string>
+    <string name="msg_prenda_anadida">Prenda añadida correctamente a la BD</string>
+    <string name="msg_error_prenda_anadida">Error!! No se ha podido añadir la prenda</string>
+    <string name="msg_error_recuperar_prendas">Error!! No se han podido recuperar las prendas</string>
 
+    <string name="nombre">Nombre</string>
 
 </resources>

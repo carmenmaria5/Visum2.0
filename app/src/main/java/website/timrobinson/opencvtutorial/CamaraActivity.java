@@ -28,18 +28,10 @@ public class CamaraActivity extends Base {
     int rgbComplementario;
     ImageView ivCaptura;
 
-
-    private Bitmap prenda1;
-    private String colorPrenda1;
-
-    private Bitmap prenda2;
-    private String colorPrenda2;
-
     //Datos de la imagen capturada
     private Bitmap imagen;
     private String colorImagen;
 
-    private boolean segundaPrenda;
     private boolean primerTouch;
 
     //--- METODOS -------------------------------------------------------------------
@@ -57,8 +49,6 @@ public class CamaraActivity extends Base {
                 if (!primerTouch) {
                     Toast.makeText(CamaraActivity.this, R.string.msg_selec_color, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(CamaraActivity.this, R.string.msg_img_capturada, Toast.LENGTH_SHORT).show();
-
                     imagen = foto;
                     colorImagen = rgb;
 
@@ -80,14 +70,14 @@ public class CamaraActivity extends Base {
                             Intent i = new Intent(CamaraActivity.this, PrendaActivity.class);
 
                             i.putExtra("fotoPrenda", Uri.parse(pathImagen).toString());
-
                             i.putExtra("colorPrenda", colorImagen);
+                            i.putExtra("editar", true);
                             startActivity(i);
                         }
                     }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // if this button is clicked, just close
-                            // the dialog box and do nothing
+                            //Si en el diálogo se pulsa "no" la imagen se borra
+                            ivCaptura.setImageResource(0);
                             dialog.cancel();
                         }
                     });
@@ -148,7 +138,7 @@ public class CamaraActivity extends Base {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_cuadrado: {
+            case R.id.menu_abrir_armario: {
                 Intent i = new Intent(CamaraActivity.this, ArmarioActivity.class);
 
 
