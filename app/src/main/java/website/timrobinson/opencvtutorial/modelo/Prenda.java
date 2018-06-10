@@ -16,6 +16,7 @@ public class Prenda {
     private String descripcion;
     private String etiqueta;
     private Bitmap fotoPrenda;
+    private String tipoPrenda;
 
     public Uri getFotoPrenda(Context context) {
 
@@ -79,6 +80,11 @@ public class Prenda {
         this.etiqueta = etiqueta;
     }
 
+    public String getTipoPrenda() {
+        return tipoPrenda;
+    }
 
-
+    public void setTipoPrenda(String tipoPrenda) {
+        this.tipoPrenda = tipoPrenda;
+    }
 }
