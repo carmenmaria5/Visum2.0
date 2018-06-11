@@ -262,6 +262,18 @@ public class ArmarioActivity extends AppCompatActivity {
 
     }
 
+    //Actualiza el listView una vez que se ha borrado la prenda de la BBDD
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        try {
+            adapter = new ArmarioAdapter(getApplicationContext(), Bd.getTodasPrendas(getApplicationContext()));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        rvArmario.setAdapter(adapter);
+    }
 
     private void filtros(String tipo) {
 
@@ -303,5 +315,6 @@ public class ArmarioActivity extends AppCompatActivity {
 
         }
     }
+
 
 }

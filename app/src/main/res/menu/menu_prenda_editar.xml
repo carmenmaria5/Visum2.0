@@ -7,14 +7,19 @@
         <!--android:title="@string/title_editar_prenda"-->
         <!--app:showAsAction="always" />-->
     <item
+        android:id="@+id/menu_editar_prenda"
+        android:icon="@mipmap/ic_menu_editar"
+        android:title="@string/title_editar_prenda"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/menu_guarda_prenda"
         android:icon="@mipmap/ic_menu_guardar"
         android:title="@string/title_guardar_prenda"
         app:showAsAction="always" />
     <item
-        android:id="@+id/menu_editar_prenda"
-        android:icon="@mipmap/ic_menu_editar"
-        android:title="@string/title_editar_prenda"
+        android:id="@+id/menu_borrar_prenda"
+        android:icon="@mipmap/ic_manu_borrar"
+        android:title="@string/title_borrar_prenda"
         app:showAsAction="always" />
     <item
         android:id="@+id/menu_cancelar_prenda"
