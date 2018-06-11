@@ -19,6 +19,8 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 
 import website.timrobinson.opencvtutorial.armario.ArmarioActivity;
+import website.timrobinson.opencvtutorial.armario.ArmarioConjuntosActivity;
+import website.timrobinson.opencvtutorial.armario.ArmarioConjuntosAdapter;
 import website.timrobinson.opencvtutorial.armario.PrendaActivity;
 
 public class CamaraActivity extends Base {
@@ -168,6 +170,11 @@ public class CamaraActivity extends Base {
             }
             case R.id.menu_salir: {
                 finish();
+                break;
+            }
+            case R.id.menu_abrir_conjuntos: {
+                Intent i = new Intent(CamaraActivity.this, ArmarioConjuntosActivity.class);
+                startActivity(i);
                 break;
             }
 

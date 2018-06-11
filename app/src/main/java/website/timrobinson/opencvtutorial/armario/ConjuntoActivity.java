@@ -89,8 +89,8 @@ public class ConjuntoActivity extends AppCompatActivity {
 
                 //CONJUNTO
                 ratingBar.setRating(c.getPuntuacion());
-                tvConjuntoDesc.setText(c.getDescripcion());
-                tvConjuntoEtiquetas.setText(c.getEtiqueta());
+                etConjuntoDesc.setText(c.getDescripcion());
+                etConjuntoEtiquetas.setText(c.getEtiqueta());
 
                 deshabilitarCampos(editar);
 
