@@ -84,7 +84,7 @@ public class Bd {
     }
 
     public static void insertarConjunto(Conjunto conjunto, Context context) throws IOException {
-        String insertSql = "INSERT INTO conjuntos (idConjunto, idPrenda1, idPrenda2 , puntuacion ,descripcion , etiqueta ) VALUES (?,?,?,?,?,?)";
+        String insertSql = "INSERT INTO conjuntos (idConjunto, idPrenda1, idPrenda2 , puntuacion ,descripcion , etiqueta, combina ) VALUES (?,?,?,?,?,?)";
         Object[] conjuntoObject = new Object[6];
         conjuntoObject[0] = null;
         conjuntoObject[1] = conjunto.getIdPrenda1();

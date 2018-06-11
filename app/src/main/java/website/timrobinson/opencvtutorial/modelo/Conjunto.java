@@ -8,6 +8,8 @@ public class Conjunto {
     private int puntuacion;
     private String descripcion;
     private String etiqueta;
+    private String combina;
+
 
     public int getId() {
         return id;
@@ -55,5 +57,13 @@ public class Conjunto {
 
     public void setEtiqueta(String etiqueta) {
         this.etiqueta = etiqueta;
+    }
+
+    public String getCombina() {
+        return combina;
+    }
+
+    public void setCombina(String combina) {
+        this.combina = combina;
     }
 }
