@@ -142,20 +142,20 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
                 }
             });
 
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-
-                    Intent i = new Intent(context, PrendaActivity.class);
-
-                    i.putExtra("PRENDA", tPrendas.get(getLayoutPosition()).getId());
-                    i.putExtra("EDITAR", false);
-
-                    context.startActivity(i);
-
-                    return false;
-                }
-            });
+//            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View view) {
+//
+//                    Intent i = new Intent(context, PrendaActivity.class);
+//
+//                    i.putExtra("PRENDA", tPrendas.get(getLayoutPosition()).getId());
+//                    i.putExtra("EDITAR", false);
+//
+//                    context.startActivity(i);
+//
+//                    return false;
+//                }
+//            });
 
         }
 

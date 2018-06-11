@@ -7,10 +7,14 @@
         <item>Camisa</item>
         <item>Camiseta</item>
         <item>Chaqueta</item>
+        <item>Chaqueta de chándal</item>
         <item>Falda</item>
+        <item>Mallas</item>
         <item>Pantalón</item>
+        <item>Pantalón de chándal</item>
         <item>Polo</item>
         <item>Vestido</item>
+        <item>Sudadera</item>
         <item>Suéter</item>
     </string-array>
 </resources>
