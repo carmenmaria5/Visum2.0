@@ -26,6 +26,7 @@ public class ConjuntoActivity extends AppCompatActivity {
 
     private boolean editar;
     private boolean yaGuardada;
+    private boolean borrar;
     Prenda p1;
     Prenda p2;
     Conjunto c;
@@ -95,10 +96,13 @@ public class ConjuntoActivity extends AppCompatActivity {
                 deshabilitarCampos(editar);
 
                 yaGuardada = true;
+                borrar = true;
             }
 
         } else {
             //--- NUEVA ----------------------------------------------------------------------------
+
+            borrar = false;
 
             try {
                 p1 = Bd.getPrendaById(getApplicationContext(), getIntent().getExtras().getInt("PRENDA1"));
@@ -135,6 +139,7 @@ public class ConjuntoActivity extends AppCompatActivity {
             menu.findItem(R.id.menu_cancelar_prenda).setVisible(true);
             menu.findItem(R.id.menu_guarda_prenda).setVisible(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            menu.findItem(R.id.menu_borrar_prenda).setVisible(false);
         } else {
             menu.findItem(R.id.menu_cancelar_prenda).setVisible(false);
             menu.findItem(R.id.menu_guarda_prenda).setVisible(false);
