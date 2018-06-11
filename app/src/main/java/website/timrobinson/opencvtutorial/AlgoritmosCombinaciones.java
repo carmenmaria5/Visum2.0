@@ -1,7 +1,6 @@
 package website.timrobinson.opencvtutorial;
 
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.support.v4.graphics.ColorUtils;
 
 import java.util.ArrayList;
@@ -22,38 +21,74 @@ public class AlgoritmosCombinaciones {
         float huePrenda = tHSL2[0];
         int i = 0;
         Float rango = 10.0f;
+        int rangoBN = 15;
+        Boolean maxAlcanzado = false;
 
         int color1 = ColorUtils.HSLToColor(tHSL1);
+        int color2 = ColorUtils.HSLToColor(tHSL2);
 
-        //Comprobamos si los valores de RGB están en un rago de +-10 para así comprobar si son
-        // negro, blanco o gris y decir que combinan con todos los colores
-        if (bt(Color.red(color1), Color.green(color1) - 10, Color.green(color1) + 10)) {
-            if (bt(Color.red(color1), Color.blue(color1) - 10, Color.blue(color1) + 10)) {
-                return true;
+        int r = Color.red(color1);
+        int g = Color.green(color1);
+        int b = Color.blue(color1);
+
+        int r2 = Color.red(color2);
+        int g2 = Color.green(color2);
+        int b2 = Color.blue(color2);
+
+        if (Color.red(color1) == 72 && Color.green(color1) == 37 && Color.blue(color1) == 31) {
+            hayCombinacion = false;
+
+        } else {
+
+            //Comprobamos si los valores de RGB están en un rago de +-10 para así comprobar si son
+            // negro, blanco o gris y decir que combinan con todos los colores
+            if (bt(Color.red(color1), Color.green(color1) - 10, Color.green(color1) + 10)) {
+                if (bt(Color.red(color1), Color.blue(color1) - 10, Color.blue(color1) + 10)) {
+                    hayCombinacion = true;
+
+                }
+            }
+
+
+            if (bt(Color.red(color2), Color.green(color2) - rangoBN, Color.green(color2) + rangoBN)) {
+                if (bt(Color.red(color2), Color.blue(color2) - rangoBN, Color.blue(color2) + rangoBN)) {
+                    if (bt(Color.blue(color2), Color.green(color2) - rangoBN, Color.green(color2) + rangoBN)) {
+                        hayCombinacion = true;
+
+                    }
+                }
+            }
+
+            while (!hayCombinacion && !maxAlcanzado) {
+                float hueColor = lColores.get(i)[0];
+
+
+                if (bt(huePrenda, hueColor - rango, hueColor + rango)) {
+
+                    hayCombinacion = true;
+                }
+
+                if (i == (lColores.size()-1)){
+                    maxAlcanzado = true;
+                }
+
+                i++;
+
+
+
             }
         }
 
-
-        while (!hayCombinacion) {
-            float hueColor = lColores.get(i)[0];
-
-            if (bt(huePrenda, hueColor - rango, hueColor + rango)) {
-
-                return true;
-            }
-        }
-
-
-        return false;
+        return hayCombinacion;
     }
 
     private static void generarColores(float[] tHSL) {
         complementario(Arrays.copyOf(tHSL, tHSL.length));
-        analogo(Arrays.copyOf(tHSL, tHSL.length));
+/*        analogo(Arrays.copyOf(tHSL, tHSL.length));
         complementarioPorSeparado(Arrays.copyOf(tHSL, tHSL.length));
         cuadrado(Arrays.copyOf(tHSL, tHSL.length));
         tetradaRectangular(Arrays.copyOf(tHSL, tHSL.length));
-        triada(Arrays.copyOf(tHSL, tHSL.length));
+        triada(Arrays.copyOf(tHSL, tHSL.length));*/
     }
 
     public static boolean bt(float i, float min, float max) {

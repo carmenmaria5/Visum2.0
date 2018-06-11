@@ -125,19 +125,22 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
                         item1 = getLayoutPosition();
                         nSelect++;
                         Toast.makeText(context, tPrendas.get(item1).getNombrePrenda()+" seleccionado (1 de 2)", Toast.LENGTH_SHORT).show();
+                        notifyItemChanged(item1);
                     }else if (nSelect == 1){
                         item2 = getLayoutPosition();
                         nSelect++;
                         Toast.makeText(context, tPrendas.get(item2).getNombrePrenda()+" seleccionado (2 de 2)", Toast.LENGTH_SHORT).show();
+                        notifyItemChanged(item2);
                     }else if(nSelect == 2){
                         item1 = getLayoutPosition();
                         item2 = 0;
                         nSelect=1;
                         Toast.makeText(context, tPrendas.get(item1).getNombrePrenda()+" seleccionado (1 de 2)", Toast.LENGTH_SHORT).show();
+                        notifyItemChanged(item1);
                     }
                     // Redraw the old selection and the new
 
-                    notifyItemChanged(item1);
+
 
                 }
             });

@@ -83,6 +83,8 @@ public class CamaraActivity extends Base {
                         public void onClick(DialogInterface dialog, int id) {
                             //Si en el diálogo se pulsa "no" la imagen se borra
                             ivCaptura.setImageResource(0);
+                            muestra.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                            muestra.setText("");
                             dialog.cancel();
                         }
                     }).show();
@@ -99,7 +101,9 @@ public class CamaraActivity extends Base {
     public void onResume() {
         super.onResume();
         ivCaptura.setImageResource(0);
-        tvMuestra.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        muestra.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        muestra.setText("");
+
     }
 
     //Método para rotar la imagen, porque OpenCV la pone girada por defecto

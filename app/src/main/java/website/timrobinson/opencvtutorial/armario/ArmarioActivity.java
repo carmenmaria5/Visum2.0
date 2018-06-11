@@ -98,13 +98,51 @@ public class ArmarioActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menuCombinar:
 
-                if(adapter.getItemCount() == 0){
+                if(adapter.getnSelect() == 0){
                     Toast.makeText(this, "Prendas seleccionadas: 0/2", Toast.LENGTH_SHORT).show();
-                }else if (adapter.getItemCount() == 1){
+                }else if (adapter.getnSelect() == 1){
                     Toast.makeText(this, "Prendas seleccionadas: 1/2", Toast.LENGTH_SHORT).show();
-                }else if (adapter.getItemCount() == 2){
+                }else if (adapter.getnSelect() == 2){
 
-                    comprobarColor(tPrendas.get(adapter.getItem1()).getColor(), tPrendas.get(adapter.getItem2()).getColor());
+                    Boolean combinan = comprobarColor(tPrendas.get(adapter.getItem1()).getColor(), tPrendas.get(adapter.getItem2()).getColor());
+
+                    //Dialogo.
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ArmarioActivity.this);
+
+                    alertDialogBuilder
+                            .setTitle(R.string.title_comprobar_combinacion)
+                            .setCancelable(false)
+                            .setIcon(getResources().getDrawable(R.drawable.ic_camera))
+
+                            .setPositiveButton(R.string.btn_guardar, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //Llama a la actividad de "Añarir al armario" para guardar la imagen
+                                    Intent i = new Intent(ArmarioActivity.this, ConjuntoActivity.class);
+
+                                    i.putExtra("PRENDA1", tPrendas.get(adapter.getItem1()).getId());
+                                    i.putExtra("PRENDA2", tPrendas.get(adapter.getItem2()).getId());
+
+                                    i.putExtra("EDITAR", true);
+
+                                    startActivity(i);
+                                }
+                            })
+
+                            .setNegativeButton(R.string.btn_cancelar, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                    dialog.cancel();
+                                }
+                            });
+
+                    if (combinan){
+                        alertDialogBuilder.setMessage(R.string.msg_combinan_prendas);
+                    }else {
+                        alertDialogBuilder.setMessage(R.string.msg_no_combinan_prendas);
+                    }
+
+                    alertDialogBuilder.show();
+
                 }
 
                 break;
@@ -113,7 +151,7 @@ public class ArmarioActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void comprobarColor(String color1, String color2) {
+    private Boolean comprobarColor(String color1, String color2) {
 
         String[] valoresColor1 = color1.trim().split(",");
 
@@ -131,52 +169,56 @@ public class ArmarioActivity extends AppCompatActivity {
         ColorUtils.RGBToHSL(Integer.parseInt(valoresColor2[0].trim()), Integer.parseInt(valoresColor2[1].trim()),
                 Integer.parseInt(valoresColor2[2].trim()),tHSLColor2);
         final boolean[] ret = new boolean[1];
-        Thread t = new Thread(){
-            @Override
-            public void run() {
-                //Dialogo.
-                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ArmarioActivity.this);
 
-                alertDialogBuilder
-                        .setTitle(R.string.title_comprobar_combinacion)
-                        .setCancelable(false)
+        return AlgoritmosCombinaciones.combinan(tHSLColor1,tHSLColor2);
 
-                        .setPositiveButton(R.string.btn_guardar, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //Llama a la actividad de "Añarir al armario" para guardar la imagen
-                                Intent i = new Intent(ArmarioActivity.this, ConjuntoActivity.class);
 
-                                i.putExtra("PRENDA1", tPrendas.get(adapter.getItem1()).getId());
-                                i.putExtra("PRENDA2", tPrendas.get(adapter.getItem2()).getId());
-
-                                i.putExtra("EDITAR", true);
-
-                                startActivity(i);
-                            }
-                        })
-
-                        .setNegativeButton(R.string.btn_cancelar, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-                                dialog.cancel();
-                            }
-                        });
-                System.out.println("Hilo ejecutado, se llama al metodo");
-                if (AlgoritmosCombinaciones.combinan(tHSLColor1,tHSLColor2)){
-                    alertDialogBuilder.setMessage(R.string.msg_combinan_prendas);
-                }else {
-                    alertDialogBuilder.setMessage(R.string.msg_no_combinan_prendas);
-                }
-                System.out.println("Pasa de la ejecucion del metodo");
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        alertDialogBuilder.show();
-                    }
-                });
-            }
-        };
-        t.start();
+//        Thread t = new Thread(){
+//            @Override
+//            public void run() {
+//                //Dialogo.
+//                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ArmarioActivity.this);
+//
+//                alertDialogBuilder
+//                        .setTitle(R.string.title_comprobar_combinacion)
+//                        .setCancelable(false)
+//
+//                        .setPositiveButton(R.string.btn_guardar, new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                //Llama a la actividad de "Añarir al armario" para guardar la imagen
+//                                Intent i = new Intent(ArmarioActivity.this, ConjuntoActivity.class);
+//
+//                                i.putExtra("PRENDA1", tPrendas.get(adapter.getItem1()).getId());
+//                                i.putExtra("PRENDA2", tPrendas.get(adapter.getItem2()).getId());
+//
+//                                i.putExtra("EDITAR", true);
+//
+//                                startActivity(i);
+//                            }
+//                        })
+//
+//                        .setNegativeButton(R.string.btn_cancelar, new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//
+//                                dialog.cancel();
+//                            }
+//                        });
+//                System.out.println("Hilo ejecutado, se llama al metodo");
+//                if (AlgoritmosCombinaciones.combinan(tHSLColor1,tHSLColor2)){
+//                    alertDialogBuilder.setMessage(R.string.msg_combinan_prendas);
+//                }else {
+//                    alertDialogBuilder.setMessage(R.string.msg_no_combinan_prendas);
+//                }
+//                System.out.println("Pasa de la ejecucion del metodo");
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        alertDialogBuilder.show();
+//                    }
+//                });
+//            }
+//        };
+//        t.start();
     }
 
 //    private class MiTareaAsincronaDialog extends AsyncTask<Void, Integer, Boolean> {

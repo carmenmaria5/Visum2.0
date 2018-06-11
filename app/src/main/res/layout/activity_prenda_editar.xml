@@ -48,13 +48,15 @@
                 <EditText
                     android:id="@+id/etNombre"
                     android:layout_width="match_parent"
-                    android:layout_height="18dp"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:hint="@string/nombre"
                     android:textColor="@android:color/darker_gray"
                     tools:layout_editor_absoluteX="195dp"
-                    tools:layout_editor_absoluteY="47dp"
-                    android:hint="@string/nombre"/>
+                    tools:layout_editor_absoluteY="47dp" />
 
                 <TextView
                     android:id="@+id/tvColor"
