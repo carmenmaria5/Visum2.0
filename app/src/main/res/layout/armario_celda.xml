@@ -29,7 +29,8 @@
             android:gravity="bottom"
             android:padding="5dp"
             android:text="TextView"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            style="@style/sizeText"/>
 
     </android.support.v7.widget.CardView>
 

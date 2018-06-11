@@ -25,7 +25,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Puntuación" />
+            android:text="Puntuación"
+            style="@style/sizeText"/>
 
         <RatingBar
             android:id="@+id/ratingBar"
@@ -41,8 +42,9 @@
 
     <TextView
         android:id="@+id/tvPrendas"
-        android:layout_width="147dp"
-        android:layout_height="22dp"
+        style="@style/sizeText"
+        android:layout_width="183dp"
+        android:layout_height="29dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
@@ -80,7 +82,8 @@
                 android:gravity="bottom"
                 android:padding="5dp"
                 android:text="TextView"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                style="@style/sizeText"/>
 
             <TextView
                 android:id="@+id/tvConjuntoPrenda2"
@@ -92,7 +95,8 @@
                 android:gravity="bottom"
                 android:padding="5dp"
                 android:text="TextView"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                style="@style/sizeText"/>
         </LinearLayout>
 
         <LinearLayout
@@ -130,12 +134,13 @@
 
         <TextView
             android:id="@+id/etCheckCombina"
+            style="@style/sizeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:text="Combina:"
+            android:hint="Combina:"
             tools:layout_editor_absoluteX="223dp"
             tools:layout_editor_absoluteY="16dp" />
 
@@ -171,7 +176,8 @@
             android:layout_marginTop="15dp"
             android:text="Descripción"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="274dp" />
+            tools:layout_editor_absoluteY="274dp"
+            style="@style/sizeText"/>
 
         <EditText
             android:id="@+id/etConjuntoDesc"
@@ -181,16 +187,17 @@
             android:scrollbars="vertical"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="300dp"
-            tools:text="Descripción..." />
+            tools:hint="Descripción..." />
 
         <TextView
             android:id="@+id/tvConjuntoEtiquetas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Etiquetas"
+            android:hint="Etiquetas"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="479dp" />
+            tools:layout_editor_absoluteY="479dp"
+            style="@style/sizeText"/>
 
         <EditText
             android:id="@+id/etConjuntoEtiquetas"
@@ -198,7 +205,8 @@
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="502dp"
-            tools:text="Etiqueta1,Etiqueta2..." />
+            tools:hint="Etiqueta1,Etiqueta2..."
+            style="@style/sizeText"/>
 
     </LinearLayout>
 

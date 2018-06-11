@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--Estilo para que ponga todos los editText con tamaño 18dp-->
+    <style name="sizeText">
+        <item name="android:textSize">18dp</item>
+    </style>
 </resources>

@@ -56,12 +56,14 @@
                     android:hint="@string/nombre"
                     android:textColor="@android:color/darker_gray"
                     tools:layout_editor_absoluteX="195dp"
-                    tools:layout_editor_absoluteY="47dp" />
+                    tools:layout_editor_absoluteY="47dp"
+                    style="@style/sizeText"/>
 
                 <TextView
                     android:id="@+id/tvColor"
+                    style="@style/sizeText"
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="Color"
                     tools:layout_editor_absoluteX="195dp"
@@ -93,7 +95,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Puntuación" />
+                android:text="Puntuación"
+                style="@style/sizeText"/>
 
             <RatingBar
                 android:id="@+id/ratingBar"
@@ -124,7 +127,8 @@
             android:layout_height="wrap_content"
             android:text="Tipo"
             tools:layout_editor_absoluteX="17dp"
-            tools:layout_editor_absoluteY="215dp" />
+            tools:layout_editor_absoluteY="215dp"
+            style="@style/sizeText" />
 
         <Spinner
             android:id="@+id/spTipos"
@@ -132,7 +136,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="238dp" />
+            tools:layout_editor_absoluteY="238dp"
+            style="@style/sizeText"/>
 
         <TextView
             android:id="@+id/tvDesc"
@@ -141,7 +146,8 @@
             android:layout_marginTop="15dp"
             android:text="Descripción"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="274dp" />
+            tools:layout_editor_absoluteY="274dp"
+            style="@style/sizeText"/>
 
         <EditText
             android:id="@+id/etDesc"
@@ -151,7 +157,8 @@
             android:scrollbars="vertical"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="300dp"
-            tools:text="Descripción..." />
+            tools:hint="Descripción..."
+            style="@style/sizeText"/>
 
         <TextView
             android:id="@+id/tvEtiquetas"
@@ -160,7 +167,8 @@
             android:layout_marginTop="15dp"
             android:text="Etiquetas"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="479dp" />
+            tools:layout_editor_absoluteY="479dp"
+            style="@style/sizeText"/>
 
         <EditText
             android:id="@+id/etEtiquetas"
@@ -168,7 +176,8 @@
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="502dp"
-            android:hint="@string/msg_etiquetas"/>
+            android:hint="@string/msg_etiquetas"
+            style="@style/sizeText"/>
 
     </LinearLayout>
 
