@@ -20,7 +20,7 @@ public class AlgoritmosCombinaciones {
         generarColores(tHSL1);
         float huePrenda = tHSL2[0];
         int i = 0;
-        Float rango = 10.0f;
+        Float rango = 12.0f;
         int rangoBN = 15;
         Boolean maxAlcanzado = false;
 

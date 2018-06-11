@@ -158,7 +158,7 @@ public class PrendaActivity extends AppCompatActivity {
             etEtiquetas.setEnabled(false);
             spTipos.setEnabled(false);
             ratingBar.setEnabled(false);
-        }else if (editar) {
+        } else if (editar) {
             etNombre.setEnabled(true);
             etDesc.setEnabled(true);
             etEtiquetas.setEnabled(true);
@@ -184,33 +184,39 @@ public class PrendaActivity extends AppCompatActivity {
                 }
                 prenda.setTipoPrenda(spTipos.getSelectedItem().toString());
 
-                if (yaGuardada){
-                    //--- PRENDA GUARDADA ANTERIORMENTE --------------------------------------------
+                //Comprobamos que al menos tenga nombre y tipo al añadir la prenda a la BBDD
+                if (prenda.getNombrePrenda().toString().equals("") || prenda.getTipoPrenda().equals("")) {
+                    Toast.makeText(this, R.string.msg_faltan_datos, Toast.LENGTH_SHORT).show();
+                } else {
 
-                    prenda.setId(p.getId());
+                    if (yaGuardada) {
+                        //--- PRENDA GUARDADA ANTERIORMENTE --------------------------------------------
 
-                    try {
-                        Bd.actualizarPrenda(prenda, getApplicationContext());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                        prenda.setId(p.getId());
 
-                    Toast.makeText(this, "Prenda actualizada", Toast.LENGTH_SHORT).show();
-                    editar = false;
-                    deshabilitarCampos(editar);
-                    invalidateOptionsMenu();
-                }else {
-                    //--- PRENDA DADA DE ALTA ------------------------------------------------------
-                    try {
-                        Bd.insertarPrenda(prenda, getApplicationContext());
-                        Toast.makeText(this, R.string.msg_prenda_anadida, Toast.LENGTH_SHORT).show();
+                        try {
+                            Bd.actualizarPrenda(prenda, getApplicationContext());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        Toast.makeText(this, "Prenda actualizada", Toast.LENGTH_SHORT).show();
                         editar = false;
                         deshabilitarCampos(editar);
-                        finish();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        Toast.makeText(this, R.string.msg_error_prenda_anadida, Toast.LENGTH_SHORT).show();
+                        invalidateOptionsMenu();
+                    } else {
+                        //--- PRENDA DADA DE ALTA ------------------------------------------------------
+                        try {
+                            Bd.insertarPrenda(prenda, getApplicationContext());
+                            Toast.makeText(this, R.string.msg_prenda_anadida, Toast.LENGTH_SHORT).show();
+                            editar = false;
+                            deshabilitarCampos(editar);
+                            finish();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Toast.makeText(this, R.string.msg_error_prenda_anadida, Toast.LENGTH_SHORT).show();
 
+                        }
                     }
                 }
                 break;
@@ -224,9 +230,9 @@ public class PrendaActivity extends AppCompatActivity {
             case R.id.menu_cancelar_prenda: {
 
 
-                if (!yaGuardada){
+                if (!yaGuardada) {
                     finish();
-                }else{
+                } else {
                     editar = false;
                     deshabilitarCampos(editar);
                     invalidateOptionsMenu();
@@ -253,7 +259,7 @@ public class PrendaActivity extends AppCompatActivity {
             menu.findItem(R.id.menu_cancelar_prenda).setVisible(false);
             menu.findItem(R.id.menu_guarda_prenda).setVisible(false);
             menu.findItem(R.id.menu_editar_prenda).setVisible(true);
-            if (yaGuardada){
+            if (yaGuardada) {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             }
         }

@@ -112,8 +112,6 @@ public class ArmarioActivity extends AppCompatActivity {
                     alertDialogBuilder
                             .setTitle(R.string.title_comprobar_combinacion)
                             .setCancelable(false)
-                            .setIcon(getResources().getDrawable(R.drawable.ic_camera))
-
                             .setPositiveButton(R.string.btn_guardar, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     //Llama a la actividad de "Añarir al armario" para guardar la imagen
@@ -136,9 +134,11 @@ public class ArmarioActivity extends AppCompatActivity {
                             });
 
                     if (combinan){
-                        alertDialogBuilder.setMessage(R.string.msg_combinan_prendas);
+                        alertDialogBuilder.setMessage(R.string.msg_combinan_prendas)
+                                .setIcon(getResources().getDrawable(R.mipmap.ic_diag_bien));
                     }else {
-                        alertDialogBuilder.setMessage(R.string.msg_no_combinan_prendas);
+                        alertDialogBuilder.setMessage(R.string.msg_no_combinan_prendas)
+                                .setIcon(getResources().getDrawable(R.mipmap.ic_diag_mal));
                     }
 
                     alertDialogBuilder.show();

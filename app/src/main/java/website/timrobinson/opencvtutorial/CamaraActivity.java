@@ -166,31 +166,11 @@ public class CamaraActivity extends Base {
                 startActivity(i);
                 break;
             }
-//            case R.id.menu_complementario: {
-//                Intent i = new Intent(this, CamaraActivity.class);
-//                startActivity(i);
-//                break;
-//            }
-//            case R.id.menu_complementariops:{
-//                Intent i = new Intent(this, ComplementariaPorSeparadoActivity.class);
-//                startActivity(i);
-//                break;
-//            }
-//            case R.id.menu_tetrada:{
-//                Intent i = new Intent(this, TetradaActivity.class);
-//                startActivity(i);
-//                break;
-//            }
-//            case R.id.menu_triada:{
-//                Intent i = new Intent(this, TriadaActivity.class);
-//                startActivity(i);
-//                break;
-//            }
-//            case R.id.menu_cuadrado:{
-//                Intent i = new Intent(this, ArmarioActivity.class);
-//                startActivity(i);
-//                break;
-//            }
+            case R.id.menu_salir: {
+                finish();
+                break;
+            }
+
         }
         return super.onOptionsItemSelected(item);
     }
