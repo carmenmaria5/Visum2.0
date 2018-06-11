@@ -11,4 +11,14 @@
         android:icon="@mipmap/ic_menu_guardar"
         android:title="@string/title_guardar_prenda"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_editar_prenda"
+        android:icon="@mipmap/ic_menu_editar"
+        android:title="@string/title_editar_prenda"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_cancelar_prenda"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="@string/btn_cancelar"
+        app:showAsAction="always" />
 </menu>

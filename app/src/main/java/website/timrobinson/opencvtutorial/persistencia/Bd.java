@@ -71,7 +71,7 @@ public class Bd {
 
     public static void actualizarPrenda(Prenda prenda, Context context) throws IOException {
         String updateSql = "UPDATE prendas SET nombrePrenda = ?, puntuacion = ?, descripcion = ?, etiqueta  = ?, tipoPrenda = ? WHERE idPrenda = ?";
-        Object[] prendaObject = new Object[5];
+        Object[] prendaObject = new Object[6];
         prendaObject[0] = prenda.getNombrePrenda();
         prendaObject[1] = prenda.getPuntuacion();
         prendaObject[2] = prenda.getDescripcion();

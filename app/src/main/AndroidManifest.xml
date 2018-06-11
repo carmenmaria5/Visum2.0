@@ -34,7 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CombinarActivity" />
         <activity android:name=".armario.ArmarioActivity" />
         <activity android:name=".armario.PrendaActivity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".armario.ArmarioConjuntosActivity" />
