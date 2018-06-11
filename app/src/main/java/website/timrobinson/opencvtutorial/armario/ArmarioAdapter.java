@@ -2,7 +2,6 @@ package website.timrobinson.opencvtutorial.armario;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 import java.util.List;
 
 import website.timrobinson.opencvtutorial.R;
-import website.timrobinson.opencvtutorial.conjunto.ConjuntoActivity;
 import website.timrobinson.opencvtutorial.modelo.Prenda;
 
 //Adaptador que marca el comportamiento de la lista de prendas.

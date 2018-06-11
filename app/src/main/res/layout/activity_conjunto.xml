@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    tools:context=".conjunto.ConjuntoActivity"
+    tools:context=".armario.ConjuntoActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <LinearLayout

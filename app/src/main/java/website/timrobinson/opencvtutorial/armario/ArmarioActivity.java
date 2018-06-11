@@ -23,7 +23,6 @@ import java.util.List;
 
 import website.timrobinson.opencvtutorial.AlgoritmosCombinaciones;
 import website.timrobinson.opencvtutorial.R;
-import website.timrobinson.opencvtutorial.conjunto.ConjuntoActivity;
 import website.timrobinson.opencvtutorial.modelo.Prenda;
 import website.timrobinson.opencvtutorial.persistencia.Bd;
 
@@ -171,6 +170,7 @@ public class ArmarioActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
     private void alertaFiltros(final String filtro) {
 

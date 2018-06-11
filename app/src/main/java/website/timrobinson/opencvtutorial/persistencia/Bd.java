@@ -175,6 +175,24 @@ public class Bd {
         return prendaTemp;
     }
 
+    public static Conjunto getConjuntoById(Context context, int idConjunto) throws UnsupportedEncodingException {
+
+        Cursor c = getBd(context).rawQuery("SELECT * FROM conjuntos WHERE idConjunto = ?", new String[]{String.valueOf(idConjunto)});
+
+        Conjunto conjuntoTemp = null;
+
+        if (c.moveToNext()) {
+            conjuntoTemp = new Conjunto();
+            conjuntoTemp.setId(c.getInt(0));
+            conjuntoTemp.setIdPrenda1(c.getInt(1));
+            conjuntoTemp.setIdPrenda2(c.getInt(2));
+            conjuntoTemp.setPuntuacion(c.getInt(3));
+            conjuntoTemp.setDescripcion(c.getString(4));
+            conjuntoTemp.setEtiqueta(c.getString(5));
+        }
+
+        return conjuntoTemp;
+    }
 
     //--- FILTROS PRENDAS -------------------------------------
     public static List<Prenda> filtroNombrePrenda(Context context, String nombrePrenda) throws UnsupportedEncodingException {

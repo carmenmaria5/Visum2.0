@@ -2,7 +2,6 @@ package website.timrobinson.opencvtutorial.armario;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,7 +22,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import website.timrobinson.opencvtutorial.R;
-import website.timrobinson.opencvtutorial.conjunto.ConjuntoActivity;
 import website.timrobinson.opencvtutorial.modelo.Prenda;
 import website.timrobinson.opencvtutorial.persistencia.Bd;
 
@@ -283,34 +281,34 @@ public class PrendaActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-        //Creación del menú.
-        @Override
-        public boolean onCreateOptionsMenu (Menu menu){
-            MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.menu_prenda_editar, menu);
+    //Creación del menú.
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_prenda_editar, menu);
 
-            if (editar) {
-                menu.findItem(R.id.menu_editar_prenda).setVisible(false);
-                menu.findItem(R.id.menu_cancelar_prenda).setVisible(true);
-                menu.findItem(R.id.menu_guarda_prenda).setVisible(true);
-                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                menu.findItem(R.id.menu_borrar_prenda).setVisible(false);
-            } else {
-                menu.findItem(R.id.menu_cancelar_prenda).setVisible(false);
-                menu.findItem(R.id.menu_guarda_prenda).setVisible(false);
-                menu.findItem(R.id.menu_editar_prenda).setVisible(true);
+        if (editar) {
+            menu.findItem(R.id.menu_editar_prenda).setVisible(false);
+            menu.findItem(R.id.menu_cancelar_prenda).setVisible(true);
+            menu.findItem(R.id.menu_guarda_prenda).setVisible(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            menu.findItem(R.id.menu_borrar_prenda).setVisible(false);
+        } else {
+            menu.findItem(R.id.menu_cancelar_prenda).setVisible(false);
+            menu.findItem(R.id.menu_guarda_prenda).setVisible(false);
+            menu.findItem(R.id.menu_editar_prenda).setVisible(true);
 //            menu.findItem(R.id.menu_borrar_prenda).setVisible(true);
-                if (yaGuardada) {
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                }
+            if (yaGuardada) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             }
-            return true;
         }
-
-        @Override
-        public boolean onSupportNavigateUp () {
-            onBackPressed();
-            return true;
-        }
-
+        return true;
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+}

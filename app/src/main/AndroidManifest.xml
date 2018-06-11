@@ -37,7 +37,7 @@
         <activity android:name=".armario.ArmarioActivity" />
         <activity android:name=".armario.PrendaActivity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".armario.ArmarioConjuntosActivity" />
-        <activity android:name=".conjunto.ConjuntoActivity"></activity>
+        <activity android:name=".armario.ConjuntoActivity"></activity>
     </application>
 
 </manifest>
