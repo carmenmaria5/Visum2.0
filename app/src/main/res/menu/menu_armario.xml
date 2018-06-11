@@ -3,8 +3,29 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menuFiltros"
+        android:icon="@drawable/ic_filter"
+        android:title="Item"
+        app:showAsAction="always" >
+        <menu>
+            <item
+                android:id="@+id/filtroTipo"
+                android:title="Tipo"></item>
+            <item
+                android:id="@+id/filtroEtiqueta"
+                android:title="Etiqueta"></item>
+            <item
+                android:id="@+id/filtroNombre"
+                android:title="Nombre"></item>
+            <item
+                android:id="@+id/filtroNada"
+                android:title="Mostrar todo"></item>
+        </menu>
+    </item>
+    <item
         android:id="@+id/menuCombinar"
         android:icon="@android:drawable/ic_menu_upload_you_tube"
         android:title="Item"
         app:showAsAction="always"/>
+
 </menu>

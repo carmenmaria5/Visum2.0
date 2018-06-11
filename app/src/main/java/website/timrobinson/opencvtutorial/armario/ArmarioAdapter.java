@@ -93,6 +93,13 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
 
     }
 
+    //ACTUALIZAR:
+    public void actualizar(List<Prenda> tPrendas){
+        this.tPrendas.clear();
+        tPrendas.addAll(tPrendas);
+        notifyDataSetChanged();
+    }
+
     //Devuelve el total de items crados.
     @Override
     public int getItemCount() {
@@ -104,6 +111,7 @@ public class ArmarioAdapter extends RecyclerView.Adapter<ArmarioAdapter.ArmarioV
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
         rvArmario = recyclerView;
+
     }
 
     //--- VIEWHOLDER -------------------------------------------------------------------------------

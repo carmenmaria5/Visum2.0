@@ -4,31 +4,26 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.graphics.ColorUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
 import java.util.List;
 
 import website.timrobinson.opencvtutorial.AlgoritmosCombinaciones;
-import website.timrobinson.opencvtutorial.CamaraActivity;
 import website.timrobinson.opencvtutorial.R;
 import website.timrobinson.opencvtutorial.conjunto.ConjuntoActivity;
-import website.timrobinson.opencvtutorial.modelo.Conjunto;
 import website.timrobinson.opencvtutorial.modelo.Prenda;
 import website.timrobinson.opencvtutorial.persistencia.Bd;
 
@@ -45,11 +40,12 @@ public class ArmarioActivity extends AppCompatActivity {
     List<Prenda> tPrendas;
 
     private boolean combina;
+
+    private String filtroNombre = "";
+    private String filtroEtiqueta = "";
+    private String filtroTipo = "";
     ProgressDialog pDialog;
 
-    public synchronized void setCombina(boolean combina){
-        this.combina = combina;
-    }
 
     //--- ON CREATE --------------------------------------------------------------------------------
     @Override
@@ -74,7 +70,7 @@ public class ArmarioActivity extends AppCompatActivity {
         rvArmario.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
 
         //Se enlaza con el adaptador.
-            rvArmario.setAdapter(adapter);
+        rvArmario.setAdapter(adapter);
 
     }
 
@@ -98,11 +94,11 @@ public class ArmarioActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menuCombinar:
 
-                if(adapter.getnSelect() == 0){
+                if (adapter.getnSelect() == 0) {
                     Toast.makeText(this, "Prendas seleccionadas: 0/2", Toast.LENGTH_SHORT).show();
-                }else if (adapter.getnSelect() == 1){
+                } else if (adapter.getnSelect() == 1) {
                     Toast.makeText(this, "Prendas seleccionadas: 1/2", Toast.LENGTH_SHORT).show();
-                }else if (adapter.getnSelect() == 2){
+                } else if (adapter.getnSelect() == 2) {
 
                     Boolean combinan = comprobarColor(tPrendas.get(adapter.getItem1()).getColor(), tPrendas.get(adapter.getItem2()).getColor());
 
@@ -112,6 +108,7 @@ public class ArmarioActivity extends AppCompatActivity {
                     alertDialogBuilder
                             .setTitle(R.string.title_comprobar_combinacion)
                             .setCancelable(false)
+                            .setIcon(getResources().getDrawable(R.drawable.ic_camera))
                             .setPositiveButton(R.string.btn_guardar, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     //Llama a la actividad de "Añarir al armario" para guardar la imagen
@@ -125,7 +122,6 @@ public class ArmarioActivity extends AppCompatActivity {
                                     startActivity(i);
                                 }
                             })
-
                             .setNegativeButton(R.string.btn_cancelar, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
 
@@ -133,10 +129,10 @@ public class ArmarioActivity extends AppCompatActivity {
                                 }
                             });
 
-                    if (combinan){
+                    if (combinan) {
                         alertDialogBuilder.setMessage(R.string.msg_combinan_prendas)
                                 .setIcon(getResources().getDrawable(R.mipmap.ic_diag_bien));
-                    }else {
+                    } else {
                         alertDialogBuilder.setMessage(R.string.msg_no_combinan_prendas)
                                 .setIcon(getResources().getDrawable(R.mipmap.ic_diag_mal));
                     }
@@ -146,9 +142,101 @@ public class ArmarioActivity extends AppCompatActivity {
                 }
 
                 break;
+
+            case R.id.filtroTipo:
+
+                alertaFiltros("tipo");
+
+                break;
+
+            case R.id.filtroNombre:
+
+                alertaFiltros("nombre");
+
+                break;
+
+            case R.id.filtroEtiqueta:
+
+                alertaFiltros("etiqueta");
+
+                break;
+            case R.id.filtroNada:
+
+                adapter = new ArmarioAdapter(getApplicationContext(), tPrendas);
+                rvArmario.setAdapter(adapter);
+
+                break;
+
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void alertaFiltros(final String filtro) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Filtrar por " + filtro);
+
+        if (filtro.equals("etiqueta") || filtro.equals("nombre")) {
+
+            final EditText input = new EditText(this);
+
+            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+            builder.setView(input);
+
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    if (filtro.equals("etiqueta")) {
+                        filtroEtiqueta = input.getText().toString();
+                    } else {
+                        filtroNombre = input.getText().toString();
+                    }
+                    filtros(filtro);
+                }
+            });
+
+        } else {
+
+            final Spinner spinner = new Spinner(this);
+
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                    R.array.tipos_ropa, android.R.layout.simple_spinner_item);
+
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+            spinner.setAdapter(adapter);
+
+            builder.setView(spinner);
+
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    filtroTipo = spinner.getSelectedItem().toString();
+
+                    filtros(filtro);
+                }
+
+            });
+
+        }
+
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                filtroEtiqueta = "";
+                filtroTipo = "";
+                filtroNombre = "";
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+
     }
 
     private Boolean comprobarColor(String color1, String color2) {
@@ -159,7 +247,7 @@ public class ArmarioActivity extends AppCompatActivity {
         final float[] tHSLColor1 = new float[3];
 
         ColorUtils.RGBToHSL(Integer.parseInt(valoresColor1[0].trim()), Integer.parseInt(valoresColor1[1].trim()),
-                Integer.parseInt(valoresColor1[2].trim()),tHSLColor1);
+                Integer.parseInt(valoresColor1[2].trim()), tHSLColor1);
 
         String[] valoresColor2 = color2.trim().split(",");
 
@@ -167,120 +255,53 @@ public class ArmarioActivity extends AppCompatActivity {
         final float[] tHSLColor2 = new float[3];
 
         ColorUtils.RGBToHSL(Integer.parseInt(valoresColor2[0].trim()), Integer.parseInt(valoresColor2[1].trim()),
-                Integer.parseInt(valoresColor2[2].trim()),tHSLColor2);
+                Integer.parseInt(valoresColor2[2].trim()), tHSLColor2);
         final boolean[] ret = new boolean[1];
 
-        return AlgoritmosCombinaciones.combinan(tHSLColor1,tHSLColor2);
+        return AlgoritmosCombinaciones.combinan(tHSLColor1, tHSLColor2);
 
-
-//        Thread t = new Thread(){
-//            @Override
-//            public void run() {
-//                //Dialogo.
-//                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ArmarioActivity.this);
-//
-//                alertDialogBuilder
-//                        .setTitle(R.string.title_comprobar_combinacion)
-//                        .setCancelable(false)
-//
-//                        .setPositiveButton(R.string.btn_guardar, new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id) {
-//                                //Llama a la actividad de "Añarir al armario" para guardar la imagen
-//                                Intent i = new Intent(ArmarioActivity.this, ConjuntoActivity.class);
-//
-//                                i.putExtra("PRENDA1", tPrendas.get(adapter.getItem1()).getId());
-//                                i.putExtra("PRENDA2", tPrendas.get(adapter.getItem2()).getId());
-//
-//                                i.putExtra("EDITAR", true);
-//
-//                                startActivity(i);
-//                            }
-//                        })
-//
-//                        .setNegativeButton(R.string.btn_cancelar, new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id) {
-//
-//                                dialog.cancel();
-//                            }
-//                        });
-//                System.out.println("Hilo ejecutado, se llama al metodo");
-//                if (AlgoritmosCombinaciones.combinan(tHSLColor1,tHSLColor2)){
-//                    alertDialogBuilder.setMessage(R.string.msg_combinan_prendas);
-//                }else {
-//                    alertDialogBuilder.setMessage(R.string.msg_no_combinan_prendas);
-//                }
-//                System.out.println("Pasa de la ejecucion del metodo");
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        alertDialogBuilder.show();
-//                    }
-//                });
-//            }
-//        };
-//        t.start();
     }
 
-//    private class MiTareaAsincronaDialog extends AsyncTask<Void, Integer, Boolean> {
-//        float[] tHSL1;
-//        float[] tHSL2;
-//
-//        public MiTareaAsincronaDialog(float[] tHSL1, float[] tHSL2) {
-//            this.tHSL1 = Arrays.copyOf(tHSL1, tHSL1.length);
-//            this.tHSL2 = Arrays.copyOf(tHSL2, tHSL1.length);
-//
-//        }
-//
-//        @Override
-//        protected Boolean doInBackground(Void... params) {
-//
-//            combina = AlgoritmosCombinaciones.combinan(tHSL1,tHSL2);
-//
-//            combina = true;
-//                publishProgress(100);
-//
-//
-//            return true;
-//        }
-//
-//        @Override
-//        protected void onProgressUpdate(Integer... values) {
-//            int progreso = values[0].intValue();
-//
-//            pDialog.setProgress(progreso);
-//        }
-//
-//        @Override
-//        protected void onPreExecute() {
-//
-//            pDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-//                @Override
-//                public void onCancel(DialogInterface dialog) {
-//                    MiTareaAsincronaDialog.this.cancel(true);
-//                }
-//            });
-//
-//            pDialog.setProgress(0);
-//            pDialog.show();
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Boolean result) {
-//            if(result)
-//            {
-//                pDialog.dismiss();
-//                Toast.makeText(ArmarioActivity.this, "Tarea finalizada!",
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//
-//        @Override
-//        protected void onCancelled() {
-//            Toast.makeText(ArmarioActivity.this, "Tarea cancelada!",
-//                    Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
+    private void filtros(String tipo) {
 
+        switch (tipo) {
+            case "tipo":
+
+                try {
+                    adapter = new ArmarioAdapter(getApplicationContext(), Bd.filtroTipoPrenda(getApplicationContext(), filtroTipo));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+                rvArmario.setAdapter(adapter);
+                break;
+
+            case "nombre":
+
+                try {
+                    adapter = new ArmarioAdapter(getApplicationContext(), Bd.filtroNombrePrenda(getApplicationContext(), filtroNombre));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+                rvArmario.setAdapter(adapter);
+
+                break;
+
+            case "etiqueta":
+
+                try {
+                    adapter = new ArmarioAdapter(getApplicationContext(), Bd.filtroEtiquetaPrenda(getApplicationContext(), filtroEtiqueta));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+                rvArmario.setAdapter(adapter);
+
+                break;
+
+        }
+    }
 
 }

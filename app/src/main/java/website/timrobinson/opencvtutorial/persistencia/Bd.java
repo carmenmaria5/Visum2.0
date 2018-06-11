@@ -232,7 +232,7 @@ public class Bd {
 
     public static List<Prenda> filtroTipoPrenda(Context context, String tipoPrenda) throws UnsupportedEncodingException {
 
-        Cursor c = getBd(context).rawQuery("SELECT * FROM prendas WHERE tipoPrenda = ?", new String[]{tipoPrenda});
+        Cursor c = getBd(context).rawQuery("SELECT * FROM prendas WHERE tipoPrenda LIKE ?", new String[]{tipoPrenda});
 
         List<Prenda> listaPrendas = new ArrayList<>();
         Prenda prendaTemp = null;
