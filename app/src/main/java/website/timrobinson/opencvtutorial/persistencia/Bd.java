@@ -84,14 +84,16 @@ public class Bd {
     }
 
     public static void insertarConjunto(Conjunto conjunto, Context context) throws IOException {
-        String insertSql = "INSERT INTO conjuntos (idConjunto, idPrenda1, idPrenda2 , puntuacion ,descripcion , etiqueta, combina ) VALUES (?,?,?,?,?,?)";
-        Object[] conjuntoObject = new Object[6];
+        String insertSql = "INSERT INTO conjuntos (idConjunto, idPrenda1, idPrenda2 , puntuacion ,descripcion , etiqueta, combina ) VALUES (?,?,?,?,?,?,?)";
+        Object[] conjuntoObject = new Object[7];
         conjuntoObject[0] = null;
         conjuntoObject[1] = conjunto.getIdPrenda1();
         conjuntoObject[2] = conjunto.getIdPrenda2();
         conjuntoObject[3] = conjunto.getPuntuacion();
         conjuntoObject[4] = conjunto.getDescripcion();
         conjuntoObject[5] = conjunto.getEtiqueta();
+        conjuntoObject[6] = conjunto.getCombina();
+
 
         getBd(context).execSQL(insertSql, conjuntoObject);
 
@@ -122,6 +124,8 @@ public class Bd {
             conjuntoTemp.setPuntuacion(c.getInt(3));
             conjuntoTemp.setDescripcion(c.getString(4));
             conjuntoTemp.setEtiqueta(c.getString(5));
+            conjuntoTemp.setCombina(c.getString(6));
+
 
             listaConjuntos.add(conjuntoTemp);
         }
@@ -189,6 +193,7 @@ public class Bd {
             conjuntoTemp.setPuntuacion(c.getInt(3));
             conjuntoTemp.setDescripcion(c.getString(4));
             conjuntoTemp.setEtiqueta(c.getString(5));
+            conjuntoTemp.setCombina(c.getString(6));
         }
 
         return conjuntoTemp;
@@ -288,6 +293,7 @@ public class Bd {
             conjuntoTemp.setPuntuacion(c.getInt(3));
             conjuntoTemp.setDescripcion(c.getString(4));
             conjuntoTemp.setEtiqueta(c.getString(5));
+            conjuntoTemp.setCombina(c.getString(6));
 
             listaConjuntos.add(conjuntoTemp);
         }

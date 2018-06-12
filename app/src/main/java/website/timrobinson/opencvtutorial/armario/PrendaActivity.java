@@ -259,6 +259,7 @@ public class PrendaActivity extends AppCompatActivity {
                         .setPositiveButton(R.string.msg_si, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 try {
+                                    Bd.borrarConjuntoPorIdPrenda(getApplicationContext(), p.getId());
                                     Bd.borrarPrenda(getApplicationContext(), p.getId());
                                     Toast.makeText(PrendaActivity.this, R.string.msg_prenda_borrada, Toast.LENGTH_SHORT).show();
                                     finish();

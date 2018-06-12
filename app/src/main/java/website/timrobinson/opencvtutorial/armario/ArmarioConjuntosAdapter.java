@@ -104,12 +104,14 @@ public class ArmarioConjuntosAdapter extends RecyclerView.Adapter<ArmarioConjunt
 
         ImageView ivImagen1;
         ImageView ivImagen2;
+        ImageView ivComb;
         TextView tvTitulo;
 
         public ArmarioViewHolder(View itemView) {
             super(itemView);
             ivImagen1 = (ImageView) itemView.findViewById(R.id.ivPrenda1);
             ivImagen2 = (ImageView) itemView.findViewById(R.id.ivPrenda2);
+            ivComb = (ImageView) itemView.findViewById(R.id.ivCombCell);
             tvTitulo = (TextView) itemView.findViewById(R.id.tvConjunto);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -145,6 +147,12 @@ public class ArmarioConjuntosAdapter extends RecyclerView.Adapter<ArmarioConjunt
             ivImagen1.setImageURI(p1.getFotoPrenda(context));
             ivImagen2.setImageURI(p2.getFotoPrenda(context));
             tvTitulo.setText(c.getDescripcion());
+
+            if (c.getCombina().equals("S")){
+                ivComb.setImageResource(R.mipmap.ic_diag_bien);
+            }else {
+                ivComb.setImageResource(R.mipmap.ic_diag_mal);
+            }
 
         }
 

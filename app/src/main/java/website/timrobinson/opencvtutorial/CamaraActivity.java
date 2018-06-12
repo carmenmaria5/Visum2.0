@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,8 +19,8 @@ import java.io.ByteArrayOutputStream;
 
 import website.timrobinson.opencvtutorial.armario.ArmarioActivity;
 import website.timrobinson.opencvtutorial.armario.ArmarioConjuntosActivity;
-import website.timrobinson.opencvtutorial.armario.ArmarioConjuntosAdapter;
 import website.timrobinson.opencvtutorial.armario.PrendaActivity;
+import website.timrobinson.opencvtutorial.persistencia.Bd;
 
 public class CamaraActivity extends Base {
 
@@ -71,17 +70,23 @@ public class CamaraActivity extends Base {
                             .setTitle(R.string.title_guardar_img)
                             .setMessage(R.string.msg_guardar_img)
                             .setCancelable(false)
-                            .setPositiveButton(R.string.msg_si, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            //Llama a la actividad de "Añarir al armario" para guardar la imagen
-                            Intent i = new Intent(CamaraActivity.this, PrendaActivity.class);
 
-                            i.putExtra("fotoPrenda", Uri.parse(pathImagen).toString());
-                            i.putExtra("colorPrenda", colorImagen);
-                            i.putExtra("editar", true);
-                            startActivity(i);
-                        }
-                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            .setPositiveButton(R.string.msg_si, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                    //Llama a la actividad de "Añarir al armario" para guardar la imagen
+                                    Intent i = new Intent(CamaraActivity.this, PrendaActivity.class);
+
+                                    i.putExtra("fotoPrenda", Uri.parse(pathImagen).toString());
+                                    i.putExtra("colorPrenda", colorImagen);
+                                    i.putExtra("editar", true);
+
+                                    startActivity(i);
+
+                                }
+                            })
+
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             //Si en el diálogo se pulsa "no" la imagen se borra
                             ivCaptura.setImageResource(0);
@@ -180,5 +185,11 @@ public class CamaraActivity extends Base {
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDestroy() {
+        Bd.cerrarConexion();
+        super.onDestroy();
     }
 }

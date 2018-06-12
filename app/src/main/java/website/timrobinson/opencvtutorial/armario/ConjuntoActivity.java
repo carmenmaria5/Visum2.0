@@ -2,12 +2,14 @@ package website.timrobinson.opencvtutorial.armario;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -30,6 +32,7 @@ public class ConjuntoActivity extends AppCompatActivity {
     Prenda p1;
     Prenda p2;
     Conjunto c;
+    String combina;
 
     private TextView textView3;
     private RatingBar ratingBar;
@@ -93,6 +96,13 @@ public class ConjuntoActivity extends AppCompatActivity {
                 etConjuntoDesc.setText(c.getDescripcion());
                 etConjuntoEtiquetas.setText(c.getEtiqueta());
 
+                if (c.getCombina().equals("S")){
+                    checkCombina.setImageResource(R.mipmap.ic_diag_bien);
+                }else {
+                    checkCombina.setImageResource(R.mipmap.ic_diag_mal);
+
+                }
+
                 deshabilitarCampos(editar);
 
                 yaGuardada = true;
@@ -123,8 +133,46 @@ public class ConjuntoActivity extends AppCompatActivity {
 
             tvConjuntoPrenda2.setText(p2.getNombrePrenda());
 
+            combina = getIntent().getExtras().getString("COMBINA");
+
+            if (combina.equals("S")){
+                checkCombina.setImageResource(R.mipmap.ic_diag_bien);
+            }else {
+                checkCombina.setImageResource(R.mipmap.ic_diag_mal);
+            }
+
             yaGuardada = false;
         }
+
+        ivPrenda1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                Intent i = new Intent(getApplicationContext(), PrendaActivity.class);
+
+                i.putExtra("PRENDA", p1.getId());
+                i.putExtra("EDITAR", false);
+
+                startActivity(i);
+
+                return false;
+            }
+        });
+
+        ivPrenda2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                Intent i = new Intent(getApplicationContext(), PrendaActivity.class);
+
+                i.putExtra("PRENDA", p2.getId());
+                i.putExtra("EDITAR", false);
+
+                startActivity(i);
+
+                return false;
+            }
+        });
 
     }
 
@@ -166,7 +214,6 @@ public class ConjuntoActivity extends AppCompatActivity {
     private void initView() {
         textView3 = (TextView) findViewById(R.id.textView3);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-        tvPrendas = (TextView) findViewById(R.id.tvPrendas);
         tvConjuntoPrenda1 = (TextView) findViewById(R.id.tvConjuntoPrenda1);
         tvConjuntoPrenda2 = (TextView) findViewById(R.id.tvConjuntoPrenda2);
         ivPrenda1 = (ImageView) findViewById(R.id.ivPrenda1);
@@ -196,7 +243,7 @@ public class ConjuntoActivity extends AppCompatActivity {
                 conjunto.setEtiqueta(etConjuntoEtiquetas.getText().toString());
                 conjunto.setIdPrenda1(p1.getId());
                 conjunto.setIdPrenda2(p2.getId());
-
+                conjunto.setCombina(combina);
 
                 if (yaGuardada) {
                     //--- PRENDA GUARDADA ANTERIORMENTE --------------------------------------------

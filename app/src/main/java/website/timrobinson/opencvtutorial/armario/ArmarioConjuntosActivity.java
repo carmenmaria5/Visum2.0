@@ -52,7 +52,7 @@ public class ArmarioConjuntosActivity extends AppCompatActivity {
         adapter = new ArmarioConjuntosAdapter(getApplicationContext(), tConjuntos);
 
         //Se indica que el rv contendrá un GridLayoutManager para ordenar su contenido. En este caso, con dos columnas.
-        rvArmarioConjuntos.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
+        rvArmarioConjuntos.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
 
         //Se enlaza con el adaptador.
         rvArmarioConjuntos.setAdapter(adapter);

@@ -38,7 +38,7 @@ public class ArmarioActivity extends AppCompatActivity {
     //Lista de prendas.
     List<Prenda> tPrendas;
 
-    private boolean combina;
+    private boolean combinan;
 
     private String filtroNombre = "";
     private String filtroEtiqueta = "";
@@ -99,7 +99,7 @@ public class ArmarioActivity extends AppCompatActivity {
                     Toast.makeText(this, "Prendas seleccionadas: 1/2", Toast.LENGTH_SHORT).show();
                 } else if (adapter.getnSelect() == 2) {
 
-                    Boolean combinan = comprobarColor(tPrendas.get(adapter.getItem1()).getColor(), tPrendas.get(adapter.getItem2()).getColor());
+                    combinan = comprobarColor(tPrendas.get(adapter.getItem1()).getColor(), tPrendas.get(adapter.getItem2()).getColor());
 
                     //Dialogo.
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ArmarioActivity.this);
@@ -118,6 +118,13 @@ public class ArmarioActivity extends AppCompatActivity {
 
                                     i.putExtra("EDITAR", true);
 
+
+                                    if (combinan){
+                                        i.putExtra("COMBINA", "S");
+                                    }else {
+                                        i.putExtra("COMBINA", "N");
+                                    }
+
                                     startActivity(i);
                                 }
                             })
@@ -131,6 +138,7 @@ public class ArmarioActivity extends AppCompatActivity {
                     if (combinan) {
                         alertDialogBuilder.setMessage(R.string.msg_combinan_prendas)
                                 .setIcon(getResources().getDrawable(R.mipmap.ic_diag_bien));
+
                     } else {
                         alertDialogBuilder.setMessage(R.string.msg_no_combinan_prendas)
                                 .setIcon(getResources().getDrawable(R.mipmap.ic_diag_mal));
@@ -241,14 +249,18 @@ public class ArmarioActivity extends AppCompatActivity {
 
     private Boolean comprobarColor(String color1, String color2) {
 
+        //Separa los colores recibidos en formato "255,255,255" en 3 valores distintos.
         String[] valoresColor1 = color1.trim().split(",");
 
-        //Color HSL
+        //Se declara el array que contendrá el valor HSL.
         final float[] tHSLColor1 = new float[3];
 
+        //Se parsea el color de RGB a HSL y se guarda en el array anterior.
         ColorUtils.RGBToHSL(Integer.parseInt(valoresColor1[0].trim()), Integer.parseInt(valoresColor1[1].trim()),
                 Integer.parseInt(valoresColor1[2].trim()), tHSLColor1);
 
+
+        //Se hace lo mismo con el segundo color:
         String[] valoresColor2 = color2.trim().split(",");
 
         //Color HSL
@@ -256,8 +268,8 @@ public class ArmarioActivity extends AppCompatActivity {
 
         ColorUtils.RGBToHSL(Integer.parseInt(valoresColor2[0].trim()), Integer.parseInt(valoresColor2[1].trim()),
                 Integer.parseInt(valoresColor2[2].trim()), tHSLColor2);
-        final boolean[] ret = new boolean[1];
 
+        //Se devuelve si combinan (TRUE) o no (FALSE)
         return AlgoritmosCombinaciones.combinan(tHSLColor1, tHSLColor2);
 
     }

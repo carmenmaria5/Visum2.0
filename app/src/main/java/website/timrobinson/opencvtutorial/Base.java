@@ -193,7 +193,7 @@ public class Base extends AppCompatActivity implements View.OnTouchListener, Cam
         int puntos = touchRegion.width * touchRegion.height;
 
         //Para hacer la media del color, finalmente se establece cada punto del
-        //color como la suma de los valores partida del total de puntos de la región.
+        //color como la suma de los valores partido del total de puntos de la región.
         for (int i = 0; i < tColorHSV.val.length; i++) {
             tColorHSV.val[i] /= puntos;
         }

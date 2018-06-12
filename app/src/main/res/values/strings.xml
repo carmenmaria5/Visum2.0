@@ -27,7 +27,7 @@
     <string name="msg_no_combinan_prendas">Las prendas no combinan</string>
     <string name="msg_combinan_prendas">Las prendas combinan</string>
     <string name="msg_faltan_datos">Error!! El nombre y el tipo son datos obligatorios</string>
-    <string name="msg_prenda_borrada">La prenda ha sido borrada</string>
+    <string name="msg_prenda_borrada">La prenda y sus connjuntos han sido borrads</string>
     <string name="msg_error_borrar_prenda">Error!! La prenda no se ha podido borrar</string>
     <string name="msg_borrar_prenda">¿Está seguro que desea borrar la prenda?</string>
     <string name="msg_conjunto_anadido">Conjunto añadido correctamente a la BD</string>
